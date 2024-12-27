@@ -61,27 +61,27 @@ export const Filters: React.FC<Props> = ({ className }) => {
         items={[
           {
             text: 'Элизабет Гилберт',
-            value: '10',
+            value: '4',
           },
           {
             text: 'Ник Вуйчич',
-            value: '11',
+            value: '5',
           },
           {
             text: 'Светлана Алексиевич',
-            value: '12',
+            value: '6',
           },
           {
             text: 'Джаннетт Уоллс',
-            value: '13',
+            value: '7',
           },
           {
             text: 'Дженнифер Уорф',
-            value: '14',
+            value: '8',
           },
           {
             text: 'Мршавко Штапич',
-            value: '15',
+            value: '9',
           },
           {
             text: 'Элизабет Гилберт',
