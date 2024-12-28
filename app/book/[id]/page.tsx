@@ -1,7 +1,3 @@
-export default function BookPage({
-	params: { id },
-}: {
-	params: { id: string };
-}) {
-	return <p>Book{id}</p>;
+export default function BookPage() {
+	return <p>Потом доделаю</p>;
 }
