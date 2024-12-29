@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Container, Title, TopBar, Filters } from "../components/shared/index";
 import { ProductCard } from "../components/shared/product-card";
 import { ProductsGroupList } from "../components/shared/products-group-list";
@@ -12,7 +13,9 @@ export default function Home() {
 			<Container className="mt-10 pb-14">
 				<div className="flex gap-[80px]">
 					<div className="w-[250px]">
-						<Filters />
+						<Suspense>
+							<Filters />
+						</Suspense>
 					</div>
 
 					<div className="flex-1">
