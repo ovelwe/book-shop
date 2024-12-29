@@ -1,23 +1,46 @@
-import React from "react";
+"use client";
 
-import { FilterCheckbox, Title, CheckboxFiltersGroup } from "./index";
+import React from "react";
+import { Title, CheckboxFiltersGroup } from "./index";
 import { Input } from "@/components/ui/input";
 import { RangeSlider } from "../ui";
+import { useAuthors, useFilters, useQueryFilters } from "@/hooks";
 
 interface Props {
 	className?: string;
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
+	const { authors, loading } = useAuthors();
+	const filters = useFilters();
+
+	useQueryFilters(filters);
+
+	const items = authors.map((item) => ({
+		value: String(item.id),
+		text: item.name,
+	}));
+
+	const updatePrices = (prices: number[]) => {
+		filters.setPrices("priceFrom", prices[0]);
+		filters.setPrices("priceTo", prices[1]);
+	};
+
 	return (
 		<div className={className}>
 			<Title text="Фильтрация" size="sm" className="mb-5 font-bold" />
 
-			<div className="flex flex-col gap-4">
-				<FilterCheckbox text="Со скидкой" value="1" />
-				<FilterCheckbox text="Новинки" value="2" />
-				<FilterCheckbox text="В наличии" value="3" />
-			</div>
+			<CheckboxFiltersGroup
+				className="filters"
+				name="filters"
+				items={[
+					{ text: "Со скидкой", value: "1" },
+					{ text: "Новинки", value: "2" },
+					{ text: "В наличии", value: "3" },
+				]}
+				onClickCheckbox={filters.setFilters}
+				selectedIds={filters.filters}
+			/>
 
 			<div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
 				<p className="font-bold mb-3">Цена от и до:</p>
@@ -27,93 +50,44 @@ export const Filters: React.FC<Props> = ({ className }) => {
 						placeholder="0"
 						min={0}
 						max={5000}
-						defaultValue={0}
+						value={String(filters.prices.priceFrom)}
+						onChange={(e) =>
+							filters.setPrices("priceFrom", Number(e.target.value))
+						}
 					/>
-					<Input type="number" min={100} max={5000} placeholder="5000" />
+					<Input
+						type="number"
+						min={100}
+						max={5000}
+						placeholder="5000"
+						value={String(filters.prices.priceTo)}
+						onChange={(e) =>
+							filters.setPrices("priceTo", Number(e.target.value))
+						}
+					/>
 				</div>
-				<RangeSlider min={0} max={5000} step={10} value={[0, 5000]} />
+				<RangeSlider
+					min={0}
+					max={5000}
+					step={10}
+					value={[
+						filters.prices.priceFrom || 0,
+						filters.prices.priceTo || 5000,
+					]}
+					onValueChange={updatePrices}
+				/>
 			</div>
 
 			<CheckboxFiltersGroup
 				className="mt-5"
+				name="authors"
 				title="Авторы"
 				limit={6}
-				defaultItems={[
-					{
-						text: "Элизабет Гилберт",
-						value: "4",
-					},
-					{
-						text: "Ник Вуйчич",
-						value: "5",
-					},
-					{
-						text: "Светлана Алексиевич",
-						value: "6",
-					},
-					{
-						text: "Джаннетт Уоллс",
-						value: "7",
-					},
-					{
-						text: "Дженнифер Уорф",
-						value: "8",
-					},
-					{
-						text: "Мршавко Штапич",
-						value: "9",
-					},
-				]}
-				items={[
-					{
-						text: "Элизабет Гилберт",
-						value: "4",
-					},
-					{
-						text: "Ник Вуйчич",
-						value: "5",
-					},
-					{
-						text: "Светлана Алексиевич",
-						value: "6",
-					},
-					{
-						text: "Джаннетт Уоллс",
-						value: "7",
-					},
-					{
-						text: "Дженнифер Уорф",
-						value: "8",
-					},
-					{
-						text: "Мршавко Штапич",
-						value: "9",
-					},
-					{
-						text: "Элизабет Гилберт",
-						value: "16",
-					},
-					{
-						text: "Ник Вуйчич",
-						value: "17",
-					},
-					{
-						text: "Светлана Алексиевич",
-						value: "18",
-					},
-					{
-						text: "Джаннетт Уоллс",
-						value: "19",
-					},
-					{
-						text: "Дженнифер Уорф",
-						value: "20",
-					},
-					{
-						text: "Мршавко Штапич",
-						value: "21",
-					},
-				]}
+				defaultItems={items.slice(0, 6)}
+				items={items}
+				isLoading={loading}
+				onClickCheckbox={filters.setSelectedAuthors}
+				selectedIds={filters.selectedAuthors}
 			/>
 		</div>
 	);

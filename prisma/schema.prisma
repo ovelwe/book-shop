@@ -38,16 +38,15 @@ model Category {
 }
 
 model Author {
-    id Int @id @default(autoincrement())
-
-    fullName String
-    lastName String
-
-    books     Book[]
-    cartItems CartItem[]
-
+    id        Int      @id @default(autoincrement())
+    name      String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    cartItems CartItem[]
+
+    books Book[] @relation("BookAuthors")
+    Book  Book[]
 }
 
 model Book {
@@ -60,11 +59,13 @@ model Book {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    authors Author[]
+    authors Author[] @relation("BookAuthors")
 
     category   Category   @relation(fields: [categoryId], references: [id])
     categoryId Int
     cartItems  CartItem[]
+    Author     Author?    @relation(fields: [authorId], references: [id])
+    authorId   Int?
 }
 
 model Cart {

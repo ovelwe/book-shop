@@ -30,9 +30,18 @@ async function up() {
 		data: authors,
 	});
 
-	await prisma.book.createMany({
-		data: books,
-	});
+	for (const book of books) {
+		const { authorIds, ...bookData } = book;
+
+		await prisma.book.create({
+			data: {
+				...bookData,
+				authors: {
+					connect: authorIds.map((id) => ({ id })),
+				},
+			},
+		});
+	}
 }
 
 async function down() {
