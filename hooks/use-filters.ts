@@ -3,8 +3,8 @@ import React from "react";
 import { useSet } from "react-use";
 
 interface QueryFilters extends PriceProps {
-	authors: string;
-	filters: string;
+	authors?: string;
+	filters?: string;
 }
 
 interface PriceProps {

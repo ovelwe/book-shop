@@ -3,11 +3,11 @@
 import React from "react";
 import { useSet } from "react-use";
 
-import { FilterCheckbox, FilterChecboxProps } from "./filter-checkbox";
+import { FilterCheckbox, FilterCheckboxProps } from "./filter-checkbox";
 import { Input } from "../ui/input";
 import { Skeleton } from "../ui";
 
-type Item = FilterChecboxProps;
+type Item = FilterCheckboxProps;
 
 interface Props {
 	title?: string;
