@@ -2,15 +2,10 @@ import { prisma } from "@/prisma/prisma-client";
 import { notFound } from "next/navigation";
 import { BookImage, Container } from "@/components/shared";
 import { Title } from "../../../components/shared/title";
-import { authors } from "@/prisma/constants";
 
-export default async function BookPage({
-	params: { id },
-}: {
-	params: { id: string };
-}) {
+export default async function BookPage({ params }: { params: { id: string } }) {
 	const book = await prisma.book.findFirst({
-		where: { id: Number(id) },
+		where: { id: Number(params.id) },
 		include: {
 			authors: true,
 		},
