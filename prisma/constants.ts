@@ -152,14 +152,16 @@ export const books = [
 	},
 	{
 		name: "Сто лет одиночества",
-		imageUrl: "https://content.img-gorod.ru//content/uf/39/065/39065.png",
+		imageUrl:
+			"https://content.img-gorod.ru/pim/products/images/c4/10/018fa185-a611-7eea-8ee3-f9137877c410.jpg?width=608&height=867&fit=bounds",
 		price: 2850,
 		categoryId: 5,
 		authorIds: [18],
 	},
 	{
 		name: "Игра в классики",
-		imageUrl: "https://content.img-gorod.ru//content/uf/39/067/39067.png",
+		imageUrl:
+			"https://content.img-gorod.ru/pim/products/images/53/32/018fa155-fece-72e8-b408-a79b0b1b5332.jpg?width=608&height=867&fit=bounds",
 		price: 1550,
 		categoryId: 5,
 		authorIds: [19],

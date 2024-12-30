@@ -27,7 +27,11 @@ export const ProductCard: React.FC<Props> = ({
 		<div className={cn(className)}>
 			<Link href={`/book/${id}`}>
 				<div className="flex justify-center p-6 rounded-lg h-[260px]">
-					<img className="w-[150px] h-[230px]" src={imageUrl} alt="Logo" />
+					<img
+						className="w-[150px] h-[230px] shadow-lg"
+						src={imageUrl}
+						alt="Logo"
+					/>
 				</div>
 
 				<Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
