@@ -1,7 +1,6 @@
 import { Suspense } from "react";
-import { Container, Title, TopBar, Filters } from "../components/shared/index";
-import { ProductsGroupList } from "../components/shared/products-group-list";
-import { categories, authors, books } from "../prisma/constants";
+import { Container, Title, TopBar, Filters } from "@/components/shared/index";
+import { ProductsGroupList } from "@/components/shared/products-group-list";
 import { prisma } from "@/prisma/prisma-client";
 
 export default async function Home() {

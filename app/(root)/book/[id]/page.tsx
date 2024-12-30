@@ -1,7 +1,7 @@
 import { prisma } from "@/prisma/prisma-client";
 import { notFound } from "next/navigation";
 import { BookImage, Container } from "@/components/shared";
-import { Title } from "../../../components/shared/title";
+import { Title } from "@/components/shared/title";
 
 export default async function BookPage({
 	params,
@@ -26,7 +26,7 @@ export default async function BookPage({
 			<div className="flex flex-1">
 				<BookImage imageUrl={book.imageUrl} />
 
-				<div className="w-[490px] bg-[#f7f6f5] pl-20 p-7 ">
+				<div className="w-[490px] bg-[#f7f6f5] pl-[30px] p-7 ">
 					<Title text={book.name} className="font-extrabold mb-[60px]" />
 
 					<p className="font-bold text-3xl mb-5">Авторы</p>

@@ -1,5 +1,6 @@
+import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 
 const nunito = Nunito({
 	subsets: ["cyrillic"],
@@ -7,7 +8,11 @@ const nunito = Nunito({
 	weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-export default function RootLayout({
+export const metadata: Metadata = {
+	title: "Book Shop | Dashboard",
+};
+
+export default function DashboardLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;

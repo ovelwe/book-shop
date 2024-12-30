@@ -17,7 +17,7 @@ export const BookImage: React.FC<Props> = ({ imageUrl, className }) => {
 			<img
 				src={imageUrl}
 				alt="Logo"
-				className="relative left-2 top-2 transition-all z-10 duration-300 w-[250px] h-[350px] shadow-xl"
+				className="relative left-2 top-2 transition-all z-10 duration-300 w-[300px] h-[400px] shadow-xl"
 			/>
 		</div>
 	);
