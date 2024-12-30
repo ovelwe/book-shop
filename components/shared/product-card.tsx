@@ -27,11 +27,11 @@ export const ProductCard: React.FC<Props> = ({
 		<div className={cn(className)}>
 			<Link href={`/book/${id}`}>
 				<div className="flex justify-center p-6 rounded-lg h-[260px]">
-					<img className="w-[140px] h-[230px]" src={imageUrl} alt="Logo" />
+					<img className="w-[150px] h-[230px]" src={imageUrl} alt="Logo" />
 				</div>
 
 				<Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
-				<p className="text-sm text-gray-400">Авторы книги</p>
+				<p className="text-sm text-gray-400">Автор</p>
 
 				<div className="flex justify-between items-center mt-4">
 					<span className="text-[20px]">
