@@ -21,7 +21,6 @@ export default async function BookPage({
 	if (!book) {
 		return notFound();
 	}
-	const totalPrice = 150;
 	const authorsString = book.authors.map((author) => author.name).join(", ");
 
 	return (
@@ -32,10 +31,10 @@ export default async function BookPage({
 				<div className="flex flex-col w-[490px] bg-[#f7f6f5] pl-[30px] p-7 justify-center">
 					<Title text={book.name} className="font-extrabold" />
 
-					<p className="text-gray-400 mb-10">{authorsString}</p>
-
+					<p className="text-gray-500 mb-10 font-bold">{authorsString}</p>
+					<p className="text-gray-600 mb-10">{book.description}</p>
 					<Button className="h-[55px] px-10 text-base rounded-[18px] w-full">
-						Добавить в корзину за {totalPrice} ₽
+						Добавить в корзину за {book.price} ₽
 					</Button>
 				</div>
 			</div>

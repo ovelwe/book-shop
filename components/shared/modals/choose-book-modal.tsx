@@ -33,6 +33,8 @@ export const ChooseBookModal: React.FC<Props> = ({ book, className }) => {
 					imageUrl={book.imageUrl}
 					name={book.name}
 					authors={authors}
+					description={book.description}
+					price={book.price}
 				/>
 			</DialogContent>
 		</Dialog>

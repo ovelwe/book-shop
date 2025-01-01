@@ -10,6 +10,8 @@ interface Props {
 	authors: { id: string; name: string }[];
 	onClickAdd?: VoidFunction;
 	className?: string;
+	description: string;
+	price: number;
 }
 
 export const ChooseBook: React.FC<Props> = ({
@@ -17,10 +19,10 @@ export const ChooseBook: React.FC<Props> = ({
 	name,
 	imageUrl,
 	authors,
+	description,
+	price,
 	onClickAdd,
 }) => {
-	const totalPrice = 350;
-
 	const authorsString = authors.map((author) => author.name).join(", ");
 
 	return (
@@ -36,10 +38,10 @@ export const ChooseBook: React.FC<Props> = ({
 			<div className="flex flex-col w-[490px] bg-[#f7f6f5] p-7 justify-center">
 				<DialogTitle className="font-extrabold mb-1">{name}</DialogTitle>
 
-				<p className="text-gray-400 mb-10">{authorsString}</p>
-
+				<p className="text-gray-500 mb-10 font-bold">{authorsString}</p>
+				<p className="text-gray-600 mb-10">{description}</p>
 				<Button className="h-[55px] px-10 text-base rounded-[18px] w-full">
-					Добавить в корзину за {totalPrice} ₽
+					Добавить в корзину за {price} ₽
 				</Button>
 			</div>
 		</div>
