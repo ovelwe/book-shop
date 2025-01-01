@@ -2,6 +2,7 @@ import { prisma } from "@/prisma/prisma-client";
 import { notFound } from "next/navigation";
 import { BookImage, Container } from "@/components/shared";
 import { Title } from "@/components/shared/title";
+import { Button } from "@/components/ui";
 
 export default async function BookPage({
 	params,
@@ -20,21 +21,22 @@ export default async function BookPage({
 	if (!book) {
 		return notFound();
 	}
+	const totalPrice = 150;
+	const authorsString = book.authors.map((author) => author.name).join(", ");
 
 	return (
 		<Container className="flex flex-col my-10">
 			<div className="flex flex-1">
 				<BookImage imageUrl={book.imageUrl} />
 
-				<div className="w-[490px] bg-[#f7f6f5] pl-[30px] p-7 ">
-					<Title text={book.name} className="font-extrabold mb-[60px]" />
+				<div className="flex flex-col w-[490px] bg-[#f7f6f5] pl-[30px] p-7 justify-center">
+					<Title text={book.name} className="font-extrabold" />
 
-					<p className="font-bold text-3xl mb-5">Авторы</p>
-					{book.authors.map((author) => (
-						<p className="text-gray-500 text-3xl" key={author.id}>
-							{author.name}
-						</p>
-					))}
+					<p className="text-gray-400 mb-10">{authorsString}</p>
+
+					<Button className="h-[55px] px-10 text-base rounded-[18px] w-full">
+						Добавить в корзину за {totalPrice} ₽
+					</Button>
 				</div>
 			</div>
 		</Container>

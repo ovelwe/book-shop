@@ -13,6 +13,7 @@ interface Props {
 	count?: number;
 	imageUrl: string;
 	className?: string;
+	authors: { id: string; name: string }[];
 }
 
 export const ProductCard: React.FC<Props> = ({
@@ -22,7 +23,10 @@ export const ProductCard: React.FC<Props> = ({
 	id,
 	imageUrl,
 	className,
+	authors,
 }) => {
+	const authorsString = authors.map((author) => author.name).join(", ");
+
 	return (
 		<div className={cn(className)}>
 			<Link href={`/book/${id}`}>
@@ -34,8 +38,12 @@ export const ProductCard: React.FC<Props> = ({
 					/>
 				</div>
 
-				<Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
-				<p className="text-sm text-gray-400">Автор</p>
+				<Title
+					text={name}
+					size="sm"
+					className="mb-1 mt-3 font-bold h-[56px] leading-[1.4] text-ellipsis overflow-hidden"
+				/>
+				<p className="text-sm text-gray-400">{authorsString}</p>
 
 				<div className="flex justify-between items-center mt-4">
 					<span className="text-[20px]">

@@ -38,9 +38,6 @@ export const SortPopup: React.FC<Props> = ({ className }) => {
 					<li className="hover:bg-secondary hover:text-primary p-2 px-4 cursor-pointer rounded-md">
 						Сначала дорогие
 					</li>
-					<li className="hover:bg-secondary hover:text-primary p-2 px-4 cursor-pointer rounded-md">
-						С лучшей оценкой
-					</li>
 				</ul>
 			</PopoverContent>
 		</Popover>
