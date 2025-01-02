@@ -10,4 +10,6 @@ export { CheckboxFiltersGroup } from "./checkbox-filters-group";
 export { ProductCard } from "./product-card";
 export { SearchInput } from "./search-input";
 export { BookImage } from "./bookImage";
+export { CartButton } from "./cart-button";
+export { CartDrawer } from "./cart-drawer";
 export * from "./modals";
